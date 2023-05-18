@@ -13,6 +13,8 @@ type Product {
     _id: ID
     name: String!
     price: Float!
+    imageURL: String!
+    category: String!
 }
 
 type MultipleProducts {
@@ -27,14 +29,14 @@ type Auth {
 type Query {
     me: User
     products: MultipleProducts
-    
+    productsInCart(ids: [ID]!): MultipleProducts
     }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(name: String!, email: String!, password: String!): Auth
-    addProduct(name: String!, price: Float!): Product
-    updateProduct(_id: ID!, name: String!, price: Float!): Product
+    addProduct(name: String!, price: Float!, imageURL: String!, category: String!): Product
+    updateProduct(_id: ID!, name: String!, price: Float!, imageURL: String!, category: String!): Product
     removeProduct(_id: ID!): Product
 }
 `

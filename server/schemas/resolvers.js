@@ -51,22 +51,23 @@ const resolvers = {
             return { token, user };
         },
 
-        addProduct: async (parent, { name, price }, context) => {
+        addProduct: async (parent, { name, price, imageURL, category}, context) => {
             if (!context.user || !context.user.admin) {
               throw new AuthenticationError('You must be an admin to do this');
             }
       
-            await Product.create({ name, price });
+            await Product.create({ name, price, imageURL, category });
           },
       
-          updateProduct: async (parent, { _id, name, price }, context) => {
+          updateProduct: async (parent, { _id, name, price, imageURL,
+          category }, context) => {
             if (!context.user || !context.user.admin) {
               throw new AuthenticationError('You must be an admin to do this');
             }
       
             await Product.findOneAndUpdate(
               _id,
-              { name, price },
+              { name, price, imageURL, category },
               {
                 new: true,
                 runValidators: true
