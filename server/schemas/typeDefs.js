@@ -13,7 +13,7 @@ type Product {
     _id: ID
     name: String!
     price: Float!
-    imageURL: String!
+    image: String!
     category: String!
 }
 
@@ -35,8 +35,8 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(name: String!, email: String!, password: String!): Auth
-    addProduct(name: String!, price: Float!, imageURL: String!, category: String!): Product
-    updateProduct(_id: ID!, name: String!, price: Float!, imageURL: String!, category: String!): Product
+    addProduct(name: String!, price: Float!, image: String!, category: String!): Product
+    updateProduct(_id: ID!, name: String!, price: Float!, image: String!, category: String!): Product
     removeProduct(_id: ID!): Product
 }
 `
