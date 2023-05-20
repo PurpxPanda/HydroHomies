@@ -8,5 +8,3 @@ mongoose.connect(
 )
 
 module.exports = mongoose.connection
-
-const mongoose = require('mongoose');
