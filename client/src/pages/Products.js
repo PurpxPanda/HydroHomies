@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../utils/queries';
 
-function Products() {
+export default function Products() {
     const { loading, data } = useQuery(QUERY_PRODUCTS);
     const products = data?.products || [];
 
