@@ -1,19 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
     return (
         <nav>
             <ul>
-                <li>Subscribe</li>
-                <li>Bundles</li>
-                <li>Products</li>
+                <li><Link to="./subscribe" >Subscribe</Link></li>
+                <li><Link to="./bundles" >Bundles</Link></li>
+                <li><Link to="./products" >Products</Link></li>
+                {/* logo here */}
                 <img src="" />
                 {/* needs conditional rendering for Admin user only */}
-                <li>Admin</li>
-                <li>Home</li>
-                <li>Login</li>
+                <li><Link to="./admin" >Admin</Link></li>
+                <li><Link to="./home" >Home</Link></li>
+                <li><Link to="./login" >Login</Link></li>
                 {/* add conditional rendering for "X Items" text */}
-                <li>View Cart</li>
+                <li><Link to="./cart" >View Cart</Link></li>
             </ul>
         </nav>
     )
