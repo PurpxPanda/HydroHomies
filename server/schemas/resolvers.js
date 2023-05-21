@@ -15,23 +15,25 @@ const resolvers = {
       return Product.find();
     },
 
-    productsInCart: async (parent, { ids }, context) => {
-      if (!context.user) {
-        throw new AuthenticationError('You need to be logged in!');
-      }
+    // This code is most likely not needed because the me query has cart
+
+  //   cart: async (parent, { ids }, context) => {
+  //     if (!context.user) {
+  //       throw new AuthenticationError('You need to be logged in!');
+  //     }
       
-      const user = await User.findById(context.user._id);
-      const cartItems = user.cart.filter(
-        cartItem => ids.includes(cartItem.product.toString())
-        );
+  //     const user = await User.findById(context.user._id);
+  //     const cartItems = user.cart.filter(
+  //       cartItem => ids.includes(cartItem.product.toString())
+  //       );
     
-      if (!cartItems) {
-        throw new Error('No products found in cart');
-      }
+  //     if (!cartItems) {
+  //       throw new Error('No products found in cart');
+  //     }
       
-      return cartItems;
-    },
-  },
+  //     return cartItems;
+  //   },
+  // },
 
   Mutation: {
     addUser: async (parent, { name, email, password }) => {

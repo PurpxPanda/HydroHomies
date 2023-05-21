@@ -1,0 +1,98 @@
+const { gql } = require('apollo-server-express');
+
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password){
+            token
+            user {
+                _id
+                name
+                email
+                cart {
+                    _id
+                    quantity
+                    product {
+                        _id
+                        name
+                        price
+                        image
+                    }
+                }
+            }
+        }
+    }
+`;
+
+export const ADD_USER = gql`
+    mutation addUser($name: String!, $email: String!, $password: String!) {
+        addUser(name: $name, email: $email, password: $password){
+            token
+            user {
+                _id
+                name
+                email
+            }
+        }
+    }
+`;
+
+export const ADD_TO_CART = gql`
+    mutation addProductToCart($productId: ID!, $quantity: Int!) {
+        addProductToCart(productId: $productId, quantity: $quantity) {
+            _id
+            name
+            email
+            cart {
+                _id
+                quantity
+                product {
+                    _id
+                    name
+                    price
+                    image
+                }
+            }
+        }
+    }
+`;
+
+export const UPDATE_PRODUCT = gql`
+    mutation updateProductInCart($productId: ID!, $increment: Boolean!) {
+        updateProductInCart(productId: $productId, increment: $increment) {
+            _id
+            name
+            email
+            cart {
+                _id
+                quantity
+                product {
+                    _id
+                    name
+                    price
+                    image
+                }
+            }
+        }
+    }
+`;
+
+export const REMOVE_PRODUCT = gql`
+    mutation removeProductFromCart($productId: ID!) {
+        removeProductFromCart(productId: $productId) {
+            _id
+            name
+            email
+            cart {
+                _id
+                quantity
+                product {
+                    _id
+                    name
+                    price
+                    image
+                }
+            }
+        }
+    }
+`;
+

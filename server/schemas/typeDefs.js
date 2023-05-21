@@ -29,7 +29,6 @@ type Auth {
 type Query {
     me: User
     products: [Product!]!
-    productsInCart(ids: [ID]!): [CartItem!]!
     }
 
 type Mutation {
