@@ -11,7 +11,7 @@ export default function LoginForm() {
         email: '',
         password: ''
     })
-    const [login, { error }] = useMutation(LOGIN);
+    const [login] = useMutation(LOGIN);
     const navigate = useNavigate();
 
     function handleChange(event) {
@@ -35,6 +35,7 @@ export default function LoginForm() {
             Auth.login(token);
         } catch (err) {
             console.log(err)
+            alert("An error occurred during login, please try again.")
         }
     }
 
@@ -60,7 +61,7 @@ export default function LoginForm() {
                     name="password"
                     value={formData.password}
                 />
-                <button onClick={() => handleClick('/')} >Submit</button>
+                <button onClick={() => handleClick('/')} >Sign In</button>
             </form>
         </div>
     )
