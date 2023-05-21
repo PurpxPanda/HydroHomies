@@ -33,7 +33,7 @@ const resolvers = {
       
   //     return cartItems;
   //   },
-  // },
+  },
 
   Mutation: {
     addUser: async (parent, { name, email, password }) => {
