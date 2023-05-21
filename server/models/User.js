@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const cartItemSchema = require('./CartItem');
 
 const userSchema = new Schema(
     {
@@ -20,10 +21,8 @@ const userSchema = new Schema(
             required: true,
             minlength: 8
         },
-        admin: {
-            type: Boolean,
-            default: false
-        }
+        cart: [cartItemSchema]
+       
     }
 );
 // set up pre-save middleware to create password
