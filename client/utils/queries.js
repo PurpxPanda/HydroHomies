@@ -21,12 +21,13 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_PRODUCTS = gql`
-    {
-        products {
-            _id
-            name
-            price
-            image
-        }
+    products($categoryId: ID!) {
+        products(categoryId: $categoryId) {
+        _id
+        name
+        price
+        image
+
+            }
     }
 `;
