@@ -96,3 +96,28 @@ export const REMOVE_PRODUCT = gql`
     }
 `;
 
+export const CHECKOUT = gql`
+  mutation Checkout {
+    checkout
+  }
+`;
+
+export const CLEAR_CART = gql`
+  mutation ClearCart {
+    clearCart {
+      _id
+      name
+      email
+      cart {
+        _id
+        quantity
+        product {
+          _id
+          name
+          price
+          image
+        }
+      }
+    }
+  }
+`;

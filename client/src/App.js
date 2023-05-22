@@ -15,6 +15,7 @@ import Admin from './pages/Admin';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
+import Success from './pages/Success';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import './App.css';
@@ -59,6 +60,7 @@ export default function App() {
           <Route exact path="/admin" element={<Admin />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/success" element={<Success />} />
         </Routes>
         <Footer />
       </div>
