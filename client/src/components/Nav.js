@@ -7,11 +7,15 @@ export default function Nav() {
             <ul>
                 <li><Link to="./subscribe" >Subscribe</Link></li>
                 <li><Link to="./bundles" >Bundles</Link></li>
-                <li><Link to="./products" >Products</Link></li>
+                <li className="dropdown" >
+                    <Link to="./products" >Products</Link>
+                    <div className="dropdown-content" >
+                        <Link to="./flasks" >Flasks</Link>
+                        <Link to="./flavor-packs" >Flavor Packs</Link>
+                    </div>
+                </li>
                 {/* logo here */}
                 <img src="" />
-                {/* needs conditional rendering for Admin user only */}
-                <li><Link to="./admin" >Admin</Link></li>
                 <li><Link to="./home" >Home</Link></li>
                 <li><Link to="./login" >Login</Link></li>
                 {/* add conditional rendering for "X Items" text */}

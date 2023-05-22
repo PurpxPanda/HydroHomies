@@ -12,7 +12,8 @@ import Auth from './utils/auth';
 import Subscribe from './pages/Subscribe';
 import Bundles from './pages/Bundles';
 import Products from './pages/Products';
-import Admin from './pages/Admin';
+import Flasks from './pages/Flasks';
+import FlavorPacks from './pages/FlavorPacks';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
@@ -57,6 +58,8 @@ export default function App() {
           <Route exact path="/subscribe" element={<Subscribe />} />
           <Route exact path="/bundles" element={<Bundles />} />
           <Route exact path="/products" element={<Products />} />
+          <Route exact path="/flasks" element={<Flasks />} />
+          <Route exact path="/flavor-packs" element={<FlavorPacks />} />
           <Route exact path="/login" element={<Login />} />
           <Route 
           exact path="/cart" 
