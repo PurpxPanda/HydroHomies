@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product } = require('../models');
 const { signToken } = require('../utils/auth');
+const stripe = require('stripe')('sk_test_51N6mkHFXTaRsxdE8yCemQKA900zn66VbBiyq8V57t2dzgwuJIYKb0fD1PVHzUWP6oIUcWhXRVLtmzBMRdQvWacCg00ZpX0BTbZ')
 
 const resolvers = {
   Query: {
@@ -126,6 +127,37 @@ const resolvers = {
       return user;
     },
 
+    checkout: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+      
+      const user = await User.findOne({ _id: context.user._id });
+      const url = new URL(context.headers.referer).origin;
+
+      // convert cart items to stripe format
+      const line_items = user.cart.map(item => ({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.product.name,
+            // convert the price to cents for stripe format
+            unit_amount: item.product.price * 100,
+          },
+        },
+        quantity: item.quantity,
+      }));
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`
+      });
+
+      return session.id;
+    },
   },
 };
 
