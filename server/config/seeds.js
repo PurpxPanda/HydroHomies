@@ -121,7 +121,7 @@ db.once('open', async () => {
         },
 
         {
-            image: 'alphabet-blocks.jpg'
+            image: 'alphabet-blocks.jpg',
             name: 'Cola Flavor',
             category: categories[2]._id,
             price: 10.00
@@ -204,7 +204,7 @@ db.once('open', async () => {
 
     await User.create({
         name: 'John ray',
-        eamil: 'John@mailme.com',
+        email: 'John@mailme.com',
         password: 'password12345',
         cart: [],
     });
