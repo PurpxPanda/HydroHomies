@@ -21,6 +21,11 @@ type CartItem {
     quantity: Int!
 }
 
+type Category {
+    _id: ID
+    name: String!
+}
+
 type Auth {
     token: ID!
     profile: User
@@ -28,7 +33,7 @@ type Auth {
 
 type Query {
     me: User
-    products: [Product!]!
+    products(categoryId: ID): [Product!]!
     }
 
 type Mutation {

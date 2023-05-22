@@ -12,8 +12,10 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    products: async () => {
-      return Product.find();
+    products: async (parent, { categoryId }) => {
+      const params = categoryId ? { category: categoryId } : {};
+      
+      return await Product.find(params).populate('category');
     },
 
     // This code is most likely not needed because the me query has cart
