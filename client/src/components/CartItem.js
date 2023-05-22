@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { useMutation } from '@apollo/client';
-import { UPDATE_PRODUCT, REMOVE_PRODUCT } from '../../utils/mutations';
-import { QUERY_USER } from '../../utils/queries';
+import { UPDATE_PRODUCT, REMOVE_PRODUCT } from '../utils/mutations';
+import { QUERY_USER } from '../utils/queries';
 
 export default function CartItem({ item }) {
     const [updateProduct] = useMutation(UPDATE_PRODUCT);

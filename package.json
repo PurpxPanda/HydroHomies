@@ -4,6 +4,11 @@
   "description": "An e-commerce website for selling flavored water",
   "main": "index.js",
   "scripts": {
+    "start": "node server --ignore client",
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/PurpxPanda/HydroHomies/issues"
   },
-  "homepage": "https://github.com/PurpxPanda/HydroHomies#readme"
+  "homepage": "https://github.com/PurpxPanda/HydroHomies#readme",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
 }
