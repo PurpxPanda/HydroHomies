@@ -12,8 +12,6 @@ export default function Products() {
         return <div>Loading...</div>;
     }
 
-    // need logic to account for admin changes to products in db
-
     return (
         <div>
             {products.map(product => (
