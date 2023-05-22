@@ -7,6 +7,7 @@ import {
   createHttpLink
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Auth from './utils/auth';
 
 import Subscribe from './pages/Subscribe';
 import Bundles from './pages/Bundles';
@@ -56,10 +57,11 @@ export default function App() {
           <Route exact path="/subscribe" element={<Subscribe />} />
           <Route exact path="/bundles" element={<Bundles />} />
           <Route exact path="/products" element={<Products />} />
-           {/* Need PrivateRoute auth so non-admin users can't access */}
-          <Route exact path="/admin" element={<Admin />} />
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/cart" element={<Cart />} />
+          <Route 
+          exact path="/cart" 
+          element={Auth.loggedIn() ? <Cart /> : <Login />} 
+          />
           <Route exact path="/success" element={<Success />} />
         </Routes>
         <Footer />
