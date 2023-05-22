@@ -38,6 +38,7 @@ type Mutation {
     updateProductInCart(productId: ID!, increment: Boolean!): User
     removeProductFromCart(productId: ID!): User
     checkout: ID!
+    clearCart: User
 }
 `
 

@@ -18,22 +18,22 @@ const resolvers = {
 
     // This code is most likely not needed because the me query has cart
 
-  //   cart: async (parent, { ids }, context) => {
-  //     if (!context.user) {
-  //       throw new AuthenticationError('You need to be logged in!');
-  //     }
-      
-  //     const user = await User.findById(context.user._id);
-  //     const cartItems = user.cart.filter(
-  //       cartItem => ids.includes(cartItem.product.toString())
-  //       );
-    
-  //     if (!cartItems) {
-  //       throw new Error('No products found in cart');
-  //     }
-      
-  //     return cartItems;
-  //   },
+    //   cart: async (parent, { ids }, context) => {
+    //     if (!context.user) {
+    //       throw new AuthenticationError('You need to be logged in!');
+    //     }
+
+    //     const user = await User.findById(context.user._id);
+    //     const cartItems = user.cart.filter(
+    //       cartItem => ids.includes(cartItem.product.toString())
+    //       );
+
+    //     if (!cartItems) {
+    //       throw new Error('No products found in cart');
+    //     }
+
+    //     return cartItems;
+    //   },
   },
 
   Mutation: {
@@ -65,41 +65,41 @@ const resolvers = {
       if (!context.user) {
         throw new AuthenticationError('You need to be logged in!');
       }
-    
+
       const cartProduct = await Product.findById(productId);
-    
+
       if (!cartProduct) {
         throw new Error('No product with this id found');
       }
-    
+
       const user = await User.findByIdAndUpdate(
         context.user._id,
         { $push: { cart: { product: cartProduct, quantity: 1 } } },
         { new: true, runValidators: true }
       );
-    
+
       return user;
-    },    
-    
+    },
+
     updateProductInCart: async (parent, { productId, increment }, context) => {
       if (!context.user) {
         throw new AuthenticationError('You need to be logged in!');
       }
-    
+
       const user = await User.findOne(
         { _id: context.user._id, 'cart.product': productId }
-        );
-    
+      );
+
       if (!user) {
         throw new Error('User not found');
       }
-    
+
       let productInCart = user.cart.find(item => item.product.equals(productId));
-    
+
       if (!productInCart) {
         throw new Error('Product not in cart');
       }
-    
+
       // Calculate new quantity based on whether the increment argument is true or false
       let newQuantity = increment ? productInCart.quantity + 1 : productInCart.quantity - 1;
 
@@ -108,10 +108,10 @@ const resolvers = {
         { $set: { 'cart.$.quantity': newQuantity } },
         { new: true }
       );
-    
+
       return updatedUser;
     },
-    
+
 
     removeProductFromCart: async (parent, { productId }, context) => {
       if (!context.user) {
@@ -131,7 +131,7 @@ const resolvers = {
       if (!context.user) {
         throw new AuthenticationError('You need to be logged in!');
       }
-      
+
       const user = await User.findOne({ _id: context.user._id });
       const url = new URL(context.headers.referer).origin;
 
@@ -158,6 +158,21 @@ const resolvers = {
 
       return session.id;
     },
+
+    clearCart: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+
+      const user = await User.findByIdAndUpdate(
+        context.user._id,
+        { $set: { cart: [] } },
+        { new: true }
+      );
+
+      return user;
+    },
+
   },
 };
 
