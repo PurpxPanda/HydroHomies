@@ -14,7 +14,10 @@ export const QUERY_USER = gql`
                     name
                     price
                     image
-                    category
+                    category {
+                        _id
+                        name
+                    }
                 }
             }
         }
@@ -22,13 +25,16 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_PRODUCTS = gql`
-    query products($categoryId: ID!) {
-        products(categoryId: $categoryId) {
-        _id
-        name
-        price
-        image
-        category
+    query products($categoryName: String!) {
+        products(categoryName: $categoryName) {
+            _id
+            name
+            price
+            image
+            category {
+                _id
+                name
             }
+        }
     }
 `;

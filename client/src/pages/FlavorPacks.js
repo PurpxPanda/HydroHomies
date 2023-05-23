@@ -6,7 +6,7 @@ import { QUERY_PRODUCTS } from '../utils/queries';
 
 export default function FlavorPacks() {
     const { loading, error, data } = useQuery(QUERY_PRODUCTS, {
-        variables: { categoryId: '3' }
+        variables: { categoryName: 'Flavor Packs' }
     });
     const products = data?.products || [];
 

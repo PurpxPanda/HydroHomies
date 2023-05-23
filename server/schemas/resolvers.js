@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product } = require('../models');
+const { User, Product, Category } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_51N6mkHFXTaRsxdE8yCemQKA900zn66VbBiyq8V57t2dzgwuJIYKb0fD1PVHzUWP6oIUcWhXRVLtmzBMRdQvWacCg00ZpX0BTbZ')
 
@@ -12,11 +12,23 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    products: async (parent, { categoryId }) => {
-      const params = categoryId ? { category: categoryId } : {};
-      
+    products: async (parent, { categoryName }) => {
+      let params = {};
+      if (categoryName) {
+        // find the category by name first
+        const category = await Category.findOne({ name: categoryName });
+        params = { category };
+      }
+      // use category object to find products with that category
       return await Product.find(params).populate('category');
+
     },
+
+    // const category = await Category.findOne({ name: categoryName });
+    // console.log(category)
+
+    // const params = categoryName ? { category: category._id } : {};
+    // console.log({ params })
 
     // This code is most likely not needed because the me query has cart
 

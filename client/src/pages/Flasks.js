@@ -6,7 +6,7 @@ import { QUERY_PRODUCTS } from '../utils/queries';
 
 export default function Flasks() {
     const { loading, error, data } = useQuery(QUERY_PRODUCTS, {
-        variables: { categoryId: '2' }
+        variables: { categoryName: 'Flasks' }
     });
     const products = data?.products || [];
 

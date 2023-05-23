@@ -34,7 +34,7 @@ type Auth {
 
 type Query {
     me: User
-    products(categoryId: ID): [Product!]!
+    products(categoryName: String): [Product!]!
     }
 
 type Mutation {
