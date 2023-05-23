@@ -16,175 +16,175 @@ db.once('open', async () => {
 
     const products = await Product.insertMany([
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'StarterBundlepng.png',
             name:'Starter Bundle',
             category: categories[0]._id,
             price: 40.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'FamilyBundle.png',
             name:'Family Bundle',
             category: categories[0]._id,
             price: 100.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'AssortedRefill.png',
             name: 'Assorted Flavors Refill',
             category: categories[0]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'ClassicRefill.png',
             name: 'Classic Flavors Refill',
             category: categories[0]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'AllRefill.png',
             name: 'All Flavors Refill',
             category: categories[0]._id,
             price: 90.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'RedBottle.png',
             name: 'Red Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'OrangeBottle.png',
             name: 'Orange Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'YellowBottle.png',
             name: 'Yellow Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'GreenBottle.png',
             name: 'Green Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'BlueBottle.png',
             name: 'Blue Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'PurpleBottle.png',
             name: 'Purple Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'PinkBottle.png',
             name: 'Pink Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'BlackBottle.png',
             name: 'Black Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'WhiteBottle.png',
             name: 'White Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: '',
             name: 'Camouflage Flask',
             category: categories[1]._id,
             price: 30.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'Cola.jpg',
             name: 'Cola Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'LemonLime.jpg',
             name: 'Lemon Lime Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'Orange.jpg',
             name: 'Orange Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'Berry.jpg',
             name: 'Berry Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'Pineapple.jpg',
             name: 'Pineapple Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'grapes.jpg',
             name: 'Grape Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'FruitPunch.jpg',
             name: 'Fruit Punch Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'Mango.jpg',
             name: 'Mango Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'Watermelon.jpg',
             name: 'Watermelon Flavor',
             category: categories[2]._id,
             price: 10.00
         },
 
         {
-            image: 'alphabet-blocks.jpg',
+            image: 'Green-apple.jpg',
             name: 'Green Apple Flavor',
             category: categories[2]._id,
             price: 10.00
