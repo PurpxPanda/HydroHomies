@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../utils/queries';
 
 export default function Bundles() {
-    const { loading, data } = useQuery(QUERY_PRODUCTS, {
+    const { loading, error, data } = useQuery(QUERY_PRODUCTS, {
         variables: { categoryId: '1' }
     });
     const products = data?.products || [];
@@ -13,6 +13,12 @@ export default function Bundles() {
     if (loading) {
         return <div>Loading...</div>;
     }
+
+    if (error) {
+        return <div>Error! {error.message}</div>;
+    }
+    
+
 
     return (
         <div>

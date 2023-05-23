@@ -24,7 +24,7 @@ export default function Cart() {
     async function handleCheckout() {
         const stripe = await stripePromise;
         // create a new checkout session
-        const { data } = await checkout({ variables: { products: productIds } });
+        const { data } = await checkout();
         const session = data.checkout.session;
         // redirect to stripe checkout
         await stripe.redirectToCheckout({ sessionId: session });

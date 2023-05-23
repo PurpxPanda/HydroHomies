@@ -16,6 +16,7 @@ export const LOGIN_USER = gql`
                         name
                         price
                         image
+                        category
                     }
                 }
             }
@@ -50,7 +51,8 @@ export const ADD_TO_CART = gql`
                     name
                     price
                     image
-                }
+                    category
+                }  
             }
         }
     }
@@ -70,6 +72,7 @@ export const UPDATE_PRODUCT = gql`
                     name
                     price
                     image
+                    category
                 }
             }
         }
@@ -90,6 +93,7 @@ export const REMOVE_PRODUCT = gql`
                     name
                     price
                     image
+                    category
                 }
             }
         }
@@ -116,6 +120,7 @@ export const CLEAR_CART = gql`
           name
           price
           image
+          category
         }
       }
     }

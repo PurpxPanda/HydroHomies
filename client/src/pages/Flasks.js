@@ -5,13 +5,17 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../utils/queries';
 
 export default function Flasks() {
-    const { loading, data } = useQuery(QUERY_PRODUCTS, {
+    const { loading, error, data } = useQuery(QUERY_PRODUCTS, {
         variables: { categoryId: '2' }
     });
     const products = data?.products || [];
 
     if (loading) {
         return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error! {error.message}</div>;
     }
 
     return (
