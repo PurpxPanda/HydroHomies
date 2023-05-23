@@ -21,7 +21,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_PRODUCTS = gql`
-    products($categoryId: ID!) {
+    query products($categoryId: ID!) {
         products(categoryId: $categoryId) {
         _id
         name

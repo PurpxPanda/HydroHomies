@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
 
 export default function LoginForm() {
 
@@ -11,7 +11,7 @@ export default function LoginForm() {
         email: '',
         password: ''
     })
-    const [login] = useMutation(LOGIN);
+    const [login] = useMutation(LOGIN_USER);
     const navigate = useNavigate();
 
     function handleChange(event) {
