@@ -14,6 +14,7 @@ export const QUERY_USER = gql`
                     name
                     price
                     image
+                    category
                 }
             }
         }
@@ -27,7 +28,7 @@ export const QUERY_PRODUCTS = gql`
         name
         price
         image
-
+        category
             }
     }
 `;

@@ -14,6 +14,7 @@ type Product {
     name: String!
     price: Float!
     image: String!
+    category: Category!
 }
 
 type CartItem {
