@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import { ADD_TO_CART } from '../utils/mutations';
 import { QUERY_USER } from '../utils/queries';
 
-export default function ProductCard(props) {
+export default function ProductCard({ _id, price, image, name }) {
     const [addProduct] = useMutation(ADD_TO_CART);
 
     function handleAdd() {
@@ -13,19 +13,19 @@ export default function ProductCard(props) {
             return alert('You must be logged in to add items to your cart.');
         }
         addProduct({
-            variables: { productId: props._id },
+            variables: { productId: _id },
             refetchQueries: [{ query: QUERY_USER }],
         });
     }
 
     return (
         <div className="card">
-            <img src={props.image} alt={props.name} />
+            <img src={image} alt={name} />
             <div className="card-body">
-                <h3>{props.name}</h3>
-                <p>${props.price}</p>
+                <h3>{name}</h3>
+                <p>${price}</p>
                 <button onClick={handleAdd}>Add to Cart</button>
             </div>
         </div>
-    )
+    );
 }
