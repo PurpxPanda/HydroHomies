@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
 
-import Subscribe from './pages/Subscribe';
+// import Subscribe from './pages/Subscribe';
 import Bundles from './pages/Bundles';
 import Products from './pages/Products';
 import Flasks from './pages/Flasks';
@@ -55,7 +55,7 @@ export default function App() {
         <Nav />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/subscribe" element={<Subscribe />} />
+          {/* <Route exact path="/subscribe" element={<Subscribe />} /> */}
           <Route exact path="/bundles" element={<Bundles />} />
           <Route exact path="/products" element={<Products />} />
           <Route exact path="/flasks" element={<Flasks />} />

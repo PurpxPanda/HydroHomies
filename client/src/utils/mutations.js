@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
     mutation login($email: String!, $password: String!) {
