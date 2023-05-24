@@ -7,12 +7,12 @@ export default function Nav() {
         <nav>
             <ul>
                 {/* <li><Link to="/subscribe" >Subscribe</Link></li> */}
-                <li><Link to="/bundles" >Bundles</Link></li>
                 <li className="dropdown" >
-                    <Link to="/products" >Products</Link>
+                    Products
                     <div className="dropdown-content" >
                         <Link to="/flasks" >Flasks</Link>
                         <Link to="/flavor-packs" >Flavor Packs</Link>
+                        <Link to="/bundles" >Bundles</Link>
                     </div>
                 </li>
                 {/* logo here */}

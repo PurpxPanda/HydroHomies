@@ -57,7 +57,6 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           {/* <Route exact path="/subscribe" element={<Subscribe />} /> */}
           <Route exact path="/bundles" element={<Bundles />} />
-          <Route exact path="/products" element={<Products />} />
           <Route exact path="/flasks" element={<Flasks />} />
           <Route exact path="/flavor-packs" element={<FlavorPacks />} />
           <Route exact path="/login" element={<Login />} />
