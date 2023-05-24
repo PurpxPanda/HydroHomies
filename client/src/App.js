@@ -43,6 +43,7 @@ const client = new ApolloClient({
   // set up our client to execute the authLink middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+  connectToDevTools: true
 });
 
 export default function App() {

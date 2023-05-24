@@ -9,7 +9,8 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe('pk_test_51N6mkHFXTaRsxdE8rkITpBkJS7j32tZkbkgieNxGsLpkOdfobbXkx6loxjsZfPiCZH2JaHSuqpyUvYYhX0uKinto00v9UdqGpr');
 
 export default function Cart() {
-    const { loading, data } = useQuery(QUERY_USER);
+    const { loading, error, data } = useQuery(QUERY_USER);
+    console.log(data)
     const [checkout] = useMutation(CHECKOUT);
     const userData = data?.me || {};
 
@@ -34,10 +35,14 @@ export default function Cart() {
         return <div>Loading...</div>;
     }
 
+    if (error) {
+        return <div>Error! {error.message}</div>;
+    }
+
     return (
         <div>
             <h1>Your Cart</h1>
-            {userData.cart.length ? (
+            {userData.cart?.length ? (
                 <div>
                     {userData.cart.map(item => (
                         <CartItem key={item._id} item={item} />
