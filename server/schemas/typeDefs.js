@@ -40,7 +40,7 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(name: String!, email: String!, password: String!): Auth
-    addProductToCart(productId: ID!): User
+    addProductToCart(productId: ID!, quantity: Int!): User
     updateProductInCart(productId: ID!, increment: Boolean!): User
     removeProductFromCart(productId: ID!): User
     checkout: ID!

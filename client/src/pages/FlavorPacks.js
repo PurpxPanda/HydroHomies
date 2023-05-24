@@ -26,6 +26,7 @@ export default function FlavorPacks() {
                 price={product.price}
                 image={product.image}
                 name={product.name}
+                productId={product._id}
                 />
             ))}
         </div>

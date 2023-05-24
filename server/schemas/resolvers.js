@@ -88,6 +88,7 @@ const resolvers = {
 
       const user = await User.findByIdAndUpdate(
         context.user._id,
+        // only allow one of each product in the cart
         { $push: { cart: { product: cartProduct, quantity: 1 } } },
         { new: true, runValidators: true }
       );
