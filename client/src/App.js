@@ -11,7 +11,6 @@ import Auth from './utils/auth';
 
 // import Subscribe from './pages/Subscribe';
 import Bundles from './pages/Bundles';
-import Products from './pages/Products';
 import Flasks from './pages/Flasks';
 import FlavorPacks from './pages/FlavorPacks';
 import Home from './pages/Home';
