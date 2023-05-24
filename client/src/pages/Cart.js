@@ -1,9 +1,9 @@
 import React from 'react';
 import CartItem from '../components/CartItem';
 
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
-import { CHECKOUT } from '../utils/mutations';
+import { QUERY_CHECKOUT } from '../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51N6mkHFXTaRsxdE8rkITpBkJS7j32tZkbkgieNxGsLpkOdfobbXkx6loxjsZfPiCZH2JaHSuqpyUvYYhX0uKinto00v9UdqGpr');
@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51N6mkHFXTaRsxdE8rkITpBkJS7j32tZkbkgie
 export default function Cart() {
     const { loading, error, data } = useQuery(QUERY_USER);
     console.log(data)
-    const [checkout] = useMutation(CHECKOUT);
+    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
     const userData = data?.me || {};
 
     function calculateTotal() {

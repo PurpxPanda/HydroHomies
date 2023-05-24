@@ -27,6 +27,10 @@ type Category {
     name: String!
 }
 
+type Checkout {
+    session: ID
+}
+
 type Auth {
     token: ID!
     profile: User
@@ -35,6 +39,7 @@ type Auth {
 type Query {
     me: User
     products(categoryName: String): [Product!]!
+    checkout(products: [ID!]!): Checkout
     }
 
 type Mutation {
