@@ -20,7 +20,9 @@ export default function Nav() {
                 <li><Link to="/" >Home</Link></li>
                 {!Auth.loggedIn() ? (
                 <li><Link to="/login" >Login</Link></li>) : (
-                <li><Link to="/" >Logout</Link></li>)
+                <li> <a href="/" onClick={() => Auth.logout()}>
+                Logout
+              </a></li>)
                 }
                 {/* add conditional rendering for "X Items" text */}
                 <li><Link to="/cart" >View Cart</Link></li>
