@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 import { useMutation } from '@apollo/client';
@@ -15,7 +15,7 @@ export default function SignupForm() {
         confirmPass: ''
     })
     const [addUser] = useMutation(ADD_USER);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -51,9 +51,9 @@ export default function SignupForm() {
         }
     }
 
-    function handleClick(path) {
-        navigate(path)
-    }
+    // function handleClick(path) {
+    //     navigate(path)
+    // }
 
     return (
         <div>
@@ -94,7 +94,7 @@ export default function SignupForm() {
                     name="confirmPass"
                     value={formData.confirmPass}
                 />
-                <button onClick={() => handleClick('/')} >Create Account</button>
+                <button type="submit" >Create Account</button>
             </form>
         </div>
     )
