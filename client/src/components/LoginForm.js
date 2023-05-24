@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 import { useMutation } from '@apollo/client';
@@ -12,7 +12,7 @@ export default function LoginForm() {
         password: ''
     })
     const [login] = useMutation(LOGIN_USER);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -39,9 +39,9 @@ export default function LoginForm() {
         }
     }
 
-    function handleClick(path) {
-        navigate(path)
-    }
+    // function handleClick(path) {
+    //     navigate(path)
+    // }
 
     return (
         <div>
@@ -61,7 +61,7 @@ export default function LoginForm() {
                     name="password"
                     value={formData.password}
                 />
-                <button onClick={() => handleClick('/')} >Sign In</button>
+                <button type="submit" >Sign In</button>
             </form>
         </div>
     )
