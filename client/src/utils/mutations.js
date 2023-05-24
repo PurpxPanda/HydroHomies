@@ -52,7 +52,7 @@ export const ADD_TO_CART = gql`
                     name
                     price
                     image
-                    category{
+                    category {
                         _id
                         name
                       }
@@ -69,14 +69,16 @@ export const UPDATE_PRODUCT = gql`
             name
             email
             cart {
-                _id
                 quantity
                 product {
                     _id
                     name
                     price
                     image
-                    category
+                    category {
+                        _id
+                        name
+                      }
                 }
             }
         }
@@ -90,14 +92,16 @@ export const REMOVE_PRODUCT = gql`
             name
             email
             cart {
-                _id
                 quantity
                 product {
                     _id
                     name
                     price
                     image
-                    category
+                    category {
+                        _id
+                        name
+                      }
                 }
             }
         }
@@ -117,14 +121,16 @@ export const CLEAR_CART = gql`
       name
       email
       cart {
-        _id
         quantity
         product {
           _id
           name
           price
           image
-          category
+          category {
+            _id
+            name
+          }
         }
       }
     }

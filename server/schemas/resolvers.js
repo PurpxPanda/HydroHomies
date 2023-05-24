@@ -7,7 +7,19 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id })
+        // get the updated user with the cart populated
+        .populate({ 
+          path: 'cart',
+          populate: {
+            path: 'product',
+            model: 'Product',
+            populate: {
+              path: 'category',
+              model: 'Category'
+            }
+          },
+       })
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -81,7 +93,7 @@ const resolvers = {
       }
 
       const cartProduct = await Product.findById(productId);
-
+      console.log(cartProduct)
       if (!cartProduct) {
         throw new Error('No product with this id found');
       }
@@ -91,7 +103,19 @@ const resolvers = {
         // only allow one of each product in the cart
         { $push: { cart: { product: cartProduct, quantity: 1 } } },
         { new: true, runValidators: true }
-      );
+        // get the updated user with the cart populated
+      ).populate({ 
+        path: 'cart',
+        populate: {
+          path: 'product',
+          model: 'Product',
+          populate: {
+            path: 'category',
+            model: 'Category'
+          }
+        },
+     })
+      console.log(user)
 
       return user;
     },
@@ -122,7 +146,19 @@ const resolvers = {
         { _id: context.user._id, 'cart.product': productId },
         { $set: { 'cart.$.quantity': newQuantity } },
         { new: true }
-      );
+      )
+      // get the updated user with the cart populated
+      .populate({ 
+        path: 'cart',
+        populate: {
+          path: 'product',
+          model: 'Product',
+          populate: {
+            path: 'category',
+            model: 'Category'
+          }
+        },
+     })
 
       return updatedUser;
     },
@@ -137,7 +173,19 @@ const resolvers = {
         { _id: context.user._id },
         { $pull: { cart: { product: productId } } },
         { new: true }
-      );
+      )
+      // get the updated user with the cart populated
+      .populate({ 
+        path: 'cart',
+        populate: {
+          path: 'product',
+          model: 'Product',
+          populate: {
+            path: 'category',
+            model: 'Category'
+          }
+        },
+     })
 
       return user;
     },
@@ -183,7 +231,19 @@ const resolvers = {
         context.user._id,
         { $set: { cart: [] } },
         { new: true }
-      );
+      )
+      // get the updated user with the cart populated
+      .populate({ 
+        path: 'cart',
+        populate: {
+          path: 'product',
+          model: 'Product',
+          populate: {
+            path: 'category',
+            model: 'Category'
+          }
+        },
+     })
 
       return user;
     },

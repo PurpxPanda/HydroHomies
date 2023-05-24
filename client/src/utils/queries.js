@@ -7,7 +7,6 @@ export const QUERY_USER = gql`
             name
             email
             cart {
-                _id
                 quantity
                 product {
                     _id
