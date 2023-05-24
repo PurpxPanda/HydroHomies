@@ -20,7 +20,7 @@ export default function ProductCard({ _id, price, image, name }) {
 
     return (
         <div className="card">
-            <img src={image} alt={name} />
+            <img src={`/images/${image}`} alt={name} />
             <div className="card-body">
                 <h3>{name}</h3>
                 <p>${price}</p>
