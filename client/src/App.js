@@ -23,7 +23,8 @@ import './App.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  // change to /graphql for production
+  uri: 'http://localhost:3001/graphql',
 });
 
 // set up request middleware to attach token to every request as authorization headers
