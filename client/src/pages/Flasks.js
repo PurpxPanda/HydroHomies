@@ -20,15 +20,20 @@ export default function Flasks() {
 
     return (
         <div>
+        <div className="flex justify-center" >
+            <h1 className="text-4xl" >Flasks</h1>
+        </div>
+        <div className="my-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {products.map(product => (
-                <ProductCard 
-                key={product._id} 
-                price={product.price}
-                image={product.image}
-                name={product.name}
-                productId={product._id}
+                <ProductCard
+                    key={product._id}
+                    price={product.price}
+                    image={product.image}
+                    name={product.name}
+                    productId={product._id}
                 />
             ))}
         </div>
+    </div>
     )
 }

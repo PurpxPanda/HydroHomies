@@ -25,27 +25,33 @@ export default function CartItem({ item }) {
     }
 
     return (
-        <div className="card card-side bg-base-100 shadow-xl">
-            <figure><img src={`/images/${item.product.image}`} alt={item.product.name} /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{item.product.name}</h2>
-                {item.quantity > 1 && (
+        <div className="flex items-center my-8 ml-8">
+            <img 
+            src={`/images/${item.product.image}`} 
+            alt={item.product.name} 
+            className="w-24 h-24" 
+            />
+            <div className="ml-4">
+                <h2 className="text-xl">{item.product.name}</h2>
+                    <p className="mt-2">Price: ${item.product.price}</p>
+                <div className="flex items-center mt-2" >
+                    {item.quantity > 1 && (
+                        <button
+                            onClick={() => handleUpdate(false)}
+                            className="text-xl btn btn-circle btn-sm"
+                        >
+                            -
+                        </button>
+                    )}
+                    <p className="mx-2" >Qty: {item.quantity}</p>
                     <button
-                        onClick={() => handleUpdate(false)}
-                        className="text-3xl btn btn-circle"
+                        onClick={() => handleUpdate(true)}
+                        className="text-xl btn btn-circle btn-sm"
                     >
-                        -
+                        +
                     </button>
-                )}
-                <p>Quantity: {item.quantity}</p>
-                <button
-                    onClick={() => handleUpdate(true)}
-                    className="text-3xl btn btn-circle"
-                >
-                    +
-                </button>
-                <p>Price: ${item.product.price}</p>
-                <div className="card-actions justify-end">
+                </div>
+                <div className="card-actions mt-4">
                     <button
                         className="btn btn-primary"
                         onClick={handleRemove}

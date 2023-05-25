@@ -23,13 +23,20 @@ export default function Success() {
     }, [clearCart])
 
     function handleClick() {
-        navigate('/')
+        navigate('/bundles')
     }
 
     return (
         <div>
-            <h1>Thank you for your purchase!</h1>
-            <button onClick={handleClick} >Continue Shopping</button>
+            <h3 className="text-center text-2xl mb-4">Thank you for your purchase, homie!</h3>
+            <div className="flex justify-center mb-4">
+                <button
+                    className="btn btn-primary"
+                    onClick={handleClick}
+                >
+                    Rehydrate
+                </button>
+            </div>
         </div>
     )
 }
