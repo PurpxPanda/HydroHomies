@@ -6,12 +6,17 @@ import { ADD_TO_CART } from '../utils/mutations';
 import { QUERY_USER } from '../utils/queries';
 
 export default function ProductCard({ productId, price, image, name }) {
+    const [loginError, setLoginError] = useState(false);
     const [addFeedback, setAddFeedback] = useState(false);
     const [addProduct] = useMutation(ADD_TO_CART);
 
     function handleAdd() {
         if (!Auth.loggedIn()) {
-            return alert('You must be logged in to add items to your cart.');
+            // display alert for 1 second if user is not logged in
+            setLoginError(true);
+            setTimeout(() => setLoginError(false), 1000);
+
+            return
         }
         addProduct({
             variables: {
@@ -29,12 +34,12 @@ export default function ProductCard({ productId, price, image, name }) {
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
             <figure>
-                <img 
-                src={`/images/${image}`} 
-                alt={name}
-                className=" w-full h-64" 
+                <img
+                    src={`/images/${image}`}
+                    alt={name}
+                    className=" w-full h-64"
                 />
-                </figure>
+            </figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p className="text-lg" >${price}</p>
@@ -45,17 +50,16 @@ export default function ProductCard({ productId, price, image, name }) {
                     >
                         {addFeedback ? "Added!" : "Add to Cart"}
                     </button>
+                    {loginError && (
+                        <div className="alert alert-warning shadow-lg">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                <span>Please log in to add items to your cart</span>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
     );
 }
-
-        // <div className="card">
-        //     <img src={`/images/${image}`} alt={name} />
-        //     <div className="card-body">
-        //         <h3>{name}</h3>
-        //         <p>${price}</p>
-        //         <button onClick={handleAdd}>Add to Cart</button>
-        //     </div>
-        // </div>

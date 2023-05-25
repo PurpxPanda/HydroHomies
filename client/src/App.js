@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
 
-// import Subscribe from './pages/Subscribe';
+
 import Bundles from './pages/Bundles';
 import Flasks from './pages/Flasks';
 import FlavorPacks from './pages/FlavorPacks';
@@ -24,7 +24,7 @@ import './App.css';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   // change to /graphql for production
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 // set up request middleware to attach token to every request as authorization headers
@@ -56,7 +56,6 @@ export default function App() {
         <Nav />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="/subscribe" element={<Subscribe />} /> */}
           <Route exact path="/bundles" element={<Bundles />} />
           <Route exact path="/flasks" element={<Flasks />} />
           <Route exact path="/flavor-packs" element={<FlavorPacks />} />

@@ -9,7 +9,6 @@ export default function Bundles() {
         variables: { categoryName: 'Bundles' }
     });
     const products = data?.products || [];
-    console.log(products)
 
     if (loading) {
         return <div>Loading...</div>;
@@ -18,8 +17,6 @@ export default function Bundles() {
     if (error) {
         return <div>Error! {error.message}</div>;
     }
-
-
 
     return (
         <div>
