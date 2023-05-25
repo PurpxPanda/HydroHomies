@@ -1,4 +1,7 @@
 # HydroHomies
+
+## Description
+
 Introducing HydroHomies, your one-stop destination for eco-friendly hydration solutions! We are an ecommerce site dedicated to reducing plastic waste and supporting the environment by offering a wide range of reusable water bottles and delicious flavorings.
 
 At HydroHomies, we understand the pressing need to address the global plastic pollution crisis. Our mission is to empower individuals to make sustainable choices without compromising on convenience or flavor. By providing high-quality, durable water bottles, we aim to reduce the consumption of single-use plastic bottles that end up polluting our landfills and oceans.
@@ -9,29 +12,9 @@ By choosing HydroHomies, you become part of a movement dedicated to preserving o
 
 Join the HydroHomies community today and make a positive impact on the environment, one sip at a time. Together, we can create a more sustainable future while staying hydrated and satisfied. Visit our website and embark on a refreshing journey towards eco-consciousness with HydroHomies!
 
-## Screenshot
+## Demo
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![React App (2)](https://github.com/PurpxPanda/HydroHomies/assets/116316302/5ebc4778-1979-4989-afb0-ba39d7d7d3b7)
 
 ## Deployed app:
 https://hydro-homies.herokuapp.com/
