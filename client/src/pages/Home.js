@@ -25,16 +25,18 @@ export default function Home() {
                 >
                     Shop Bundles</button>
             </div>
-            <div className="best-sellers">
-                <h2>Best Sellers</h2>
+            <div className="Support">
+                <h2>Supporting the Earth one bottle at a time</h2>
                 <div className="product-list">
                     <ProductCard />
-                </div>
-                <button data-set-theme="" data-act-class="ACTIVECLASS"></button>
-<button data-set-theme="dark" data-act-class="ACTIVECLASS"></button>
-<button data-set-theme="pink" data-act-class="ACTIVECLASS"></button>
             </div>
-        </div>      
+        </div>
+        </div>
     )
 }
+
+
+    
+
+
 
