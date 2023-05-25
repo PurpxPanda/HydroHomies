@@ -56,46 +56,126 @@ export default function SignupForm() {
     // }
 
     return (
-        <div>
-            <h2>Signup</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="First Name"
-                    onChange={handleChange}
-                    name="firstName"
-                    value={formData.firstName}
-                />
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                    onChange={handleChange}
-                    name="lastName"
-                    value={formData.lastName}
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    name="email"
-                    value={formData.email}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                    name="password"
-                    value={formData.password}
-                />
-                <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    onChange={handleChange}
-                    name="confirmPass"
-                    value={formData.confirmPass}
-                />
-                <button type="submit" >Create Account</button>
-            </form>
+        <div className="flex justify-center" >
+            <div
+                className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <form onSubmit={handleSubmit} className="card-body">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">First Name</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            onChange={handleChange}
+                            name="firstName"
+                            value={formData.firstName}
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Last Name</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            onChange={handleChange}
+                            name="lastName"
+                            value={formData.lastName}
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            onChange={handleChange}
+                            name="email"
+                            value={formData.email}
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Password</span>
+                        </label>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            onChange={handleChange}
+                            name="password"
+                            value={formData.password}
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Confirm Password</span>
+                        </label>
+                        <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            onChange={handleChange}
+                            name="confirmPass"
+                            value={formData.confirmPass}
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control mt-6">
+                        <button
+                            className="btn btn-primary"
+                            type="submit"
+                        >
+                            Create Account
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
+        // <div>
+        //     <h2>Signup</h2>
+        //     <form onSubmit={handleSubmit}>
+        //         <input
+        //             type="text"
+        //             placeholder="First Name"
+        //             onChange={handleChange}
+        //             name="firstName"
+        //             value={formData.firstName}
+        //         />
+        //         <input
+        //             type="text"
+        //             placeholder="Last Name"
+        //             onChange={handleChange}
+        //             name="lastName"
+        //             value={formData.lastName}
+        //         />
+        //         <input
+        //             type="email"
+        //             placeholder="Email"
+        //             onChange={handleChange}
+        //             name="email"
+        //             value={formData.email}
+        //         />
+        //         <input
+        //             type="password"
+        //             placeholder="Password"
+        //             onChange={handleChange}
+        //             name="password"
+        //             value={formData.password}
+        //         />
+        //         <input
+        //             type="password"
+        //             placeholder="Confirm Password"
+        //             onChange={handleChange}
+        //             name="confirmPass"
+        //             value={formData.confirmPass}
+        //         />
+        //         <button type="submit" >Create Account</button>
+        //     </form>
+        // </div>

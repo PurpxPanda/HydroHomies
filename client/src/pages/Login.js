@@ -12,8 +12,22 @@ export default function Login() {
 
     return (
         <div>
-            <button value="login" onClick={handleClick}>Log In</button>
-            <button value="signup" onClick={handleClick}>Sign Up</button>
+            <div className="flex justify-center" >
+                <button
+                    value="login"
+                    onClick={handleClick}
+                    className="btn btn-primary btn-sm mr-6"
+                >
+                    Login
+                </button>
+                <button
+                    value="signup"
+                    onClick={handleClick}
+                    className="btn btn-primary btn-sm"
+                >
+                    Sign Up
+                </button>
+            </div>
             <div className="form">
                 {form === 'login' ? <LoginForm /> : <SignupForm />}
             </div>
