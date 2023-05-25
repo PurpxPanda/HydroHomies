@@ -35,34 +35,6 @@ const resolvers = {
       return await Product.find(params).populate('category');
 
     },
-
-    
-
-    // const category = await Category.findOne({ name: categoryName });
-    // console.log(category)
-
-    // const params = categoryName ? { category: category._id } : {};
-    // console.log({ params })
-
-    // This code is most likely not needed because the me query has cart
-
-
-    //   cart: async (parent, { ids }, context) => {
-    //     if (!context.user) {
-    //       throw new AuthenticationError('You need to be logged in!');
-    //     }
-
-    //     const user = await User.findById(context.user._id);
-    //     const cartItems = user.cart.filter(
-    //       cartItem => ids.includes(cartItem.product.toString())
-    //       );
-
-    //     if (!cartItems) {
-    //       throw new Error('No products found in cart');
-    //     }
-
-    //     return cartItems;
-    //   },
   },
 
   Mutation: {
@@ -96,7 +68,7 @@ const resolvers = {
       }
 
       const cartProduct = await Product.findById(productId);
-      console.log(cartProduct)
+      
       if (!cartProduct) {
         throw new Error('No product with this id found');
       }
@@ -118,7 +90,7 @@ const resolvers = {
           }
         },
       })
-      console.log(user)
+      
 
       return user;
     },
@@ -227,7 +199,6 @@ const resolvers = {
 
       let session;
       try {
-        console.log(line_items)
         session = await stripe.checkout.sessions.create({
           payment_method_types: ['card'],
           line_items,
@@ -238,7 +209,7 @@ const resolvers = {
       } catch (error) {
         console.error("Stripe checkout session creation failed: ", error);
       }
-      console.log(session)
+  
       return session ? { session: session.id } : null;
     },
 

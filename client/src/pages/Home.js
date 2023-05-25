@@ -17,12 +17,12 @@ export default function Home() {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Sip Sustainably, Inspire Change</h1>
                     <p className="mb-5">Join us today and become a hero of sustainability. With every flask purchased, you'll personally contribute to saving the environment by reducing the average person's plastic bottle usage by a staggering 156 bottles per year. Embrace the role of a true homie and make a positive impact on our planet.</p>
-                    <button 
-                    className="btn btn-primary"
-                    onClick={handleClick}
+                    <button
+                        className="btn btn-primary"
+                        onClick={handleClick}
                     >
                         Get Started
-                        </button>
+                    </button>
                 </div>
             </div>
         </div>

@@ -20,7 +20,6 @@ export default function Cart() {
 
     const [getCheckout, { data: checkoutData }] = useMutation(CHECKOUT);
     const userCart = userData?.me?.cart || [];
-    console.log(userCart)
 
     function calculateTotal() {
         let sum = 0;
@@ -41,7 +40,7 @@ export default function Cart() {
     // ensures that the checkoutData object is available before redirecting to Stripe
     useEffect(() => {
         if (checkoutData) {
-            console.log(checkoutData);
+         
 
             const handleStripe = async () => {
                 const stripe = await stripePromise;
@@ -64,7 +63,6 @@ export default function Cart() {
     if (error) {
         return <div>Error! {error.message}</div>;
     }
-
 
     return (
         <div>

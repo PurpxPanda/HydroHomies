@@ -26,14 +26,14 @@ export default function CartItem({ item }) {
 
     return (
         <div className="flex items-center my-8 ml-8">
-            <img 
-            src={`/images/${item.product.image}`} 
-            alt={item.product.name} 
-            className="w-24 h-24" 
+            <img
+                src={`/images/${item.product.image}`}
+                alt={item.product.name}
+                className="w-24 h-24"
             />
             <div className="ml-4">
                 <h2 className="text-xl">{item.product.name}</h2>
-                    <p className="mt-2">Price: ${item.product.price}</p>
+                <p className="mt-2">Price: ${item.product.price}</p>
                 <div className="flex items-center mt-2" >
                     {item.quantity > 1 && (
                         <button
@@ -63,31 +63,3 @@ export default function CartItem({ item }) {
         </div>
     )
 }
-
-//  <div>
-//     <h3>{item.product.name}</h3>
-//     {item.quantity > 1 && (
-//         <button 
-//         onClick={() => handleUpdate(false)}
-//         className="btn btn-circle"
-//         >
-//             -
-//         </button>
-//     )}
-//     <p>Quantity: {item.quantity}</p>
-//     <button 
-//     onClick={() => handleUpdate(true)}
-//     className="btn btn-circle"
-//     >
-//         +
-//         </button>
-//     <p>Price: ${item.product.price}</p>
-//     <button onClick={handleRemove}>Remove</button>
-// </div> 
-
-{/* <button className="btn btn-circle">
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-</button>
-<button className="btn btn-circle btn-outline">
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-</button> */}
