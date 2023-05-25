@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartItem from '../components/CartItem';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -10,6 +11,13 @@ const stripePromise = loadStripe('pk_test_51N6mkHFXTaRsxdE8rkITpBkJS7j32tZkbkgie
 
 export default function Cart() {
     const { loading, error, data: userData } = useQuery(QUERY_USER);
+    // useNavigate hook will redirect user to another route
+    const navigate = useNavigate();
+    // function to handle button clicks
+    function handleClick() {
+        navigate('/bundles')
+    }
+
     const [getCheckout, { data: checkoutData }] = useMutation(CHECKOUT);
     const userCart = userData?.me?.cart || [];
     console.log(userCart)
@@ -34,13 +42,13 @@ export default function Cart() {
     useEffect(() => {
         if (checkoutData) {
             console.log(checkoutData);
-    
+
             const handleStripe = async () => {
                 const stripe = await stripePromise;
                 const session = checkoutData.checkout.session;
                 await stripe.redirectToCheckout({ sessionId: session });
             };
-    
+
             handleStripe();
         }
     }, [checkoutData]);
@@ -57,20 +65,47 @@ export default function Cart() {
         return <div>Error! {error.message}</div>;
     }
 
+
     return (
         <div>
-            <h1>Your Cart</h1>
-            {userCart.length ? (
-                <div>
-                    {userCart.map(item => (
-                        <CartItem key={item._id} item={item} />
-                    ))}
-                    <div>
-                        <h3>Total: ${calculateTotal()} </h3>
-                        <button onClick={handleCheckout}>Checkout</button>
+            <div className="flex justify-center" >
+                <h1 className="text-4xl" >Your Cart</h1>
+            </div>
+            <div className="fixed top-0 right-0 mr-4 mt-14 z-10" >
+                <div className="card bg-base-100 w-64">
+                    <div className="card-body">
+                        <h3 className="text-center text-xl">Total: ${calculateTotal()}</h3>
+                        <button
+                            onClick={handleCheckout}
+                            className="btn btn-primary mt-4"
+                        >
+                            Checkout
+                        </button>
                     </div>
                 </div>
-            ) : <h3>There are currently no items in your cart!</h3>}
+            </div>
+            <div className="mt-8" >
+                {userCart.length ? (
+                    <div>
+                        {userCart.map(item => (
+                            <CartItem key={item.product._id} item={item} />
+                        ))}
+                    </div>
+                ) : (
+                    <div>
+                        <h3 className="text-center text-2xl mb-4">Uh-oh, bro! Your cart is as empty as an ocean with no waves!</h3>
+                        <p className="text-center text-lg mb-4">Be a homie and start sipping sustainably to inspire change.</p>
+                        <div className="flex justify-center mb-4">
+                            <button
+                                className="btn btn-primary"
+                                onClick={handleClick}
+                            >
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

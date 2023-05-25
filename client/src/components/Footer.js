@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
     return (
-        <footer className="footer footer-center p-10 bg-primary text-primary-content">
+        <footer className="footer footer-center p-10 bg-primary text-primary-content mt-auto">
   <div>
     <p className="font-bold">
       HydroHomies INC. <br/> Sip Sustainably, Inspire Change
