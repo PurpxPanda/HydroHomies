@@ -108,6 +108,14 @@ export const REMOVE_PRODUCT = gql`
     }
 `;
 
+export const CHECKOUT = gql`
+  mutation checkout($products: [ID!]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;
+
 
 export const CLEAR_CART = gql`
   mutation ClearCart {

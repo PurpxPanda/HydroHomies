@@ -39,8 +39,7 @@ type Auth {
 type Query {
     me: User
     products(categoryName: String): [Product!]!
-    checkout(products: [ID!]!): Checkout
-    }
+}
 
 type Mutation {
     login(email: String!, password: String!): Auth
@@ -48,7 +47,7 @@ type Mutation {
     addProductToCart(productId: ID!, quantity: Int!): User
     updateProductInCart(productId: ID!, increment: Boolean!): User
     removeProductFromCart(productId: ID!): User
-    checkout: ID!
+    checkout(products: [ID!]!): Checkout
     clearCart: User
 }
 `
