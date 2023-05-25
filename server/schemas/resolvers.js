@@ -8,18 +8,18 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
-        // get the updated user with the cart populated
-        .populate({ 
-          path: 'cart',
-          populate: {
-            path: 'product',
-            model: 'Product',
+          // get the updated user with the cart populated
+          .populate({
+            path: 'cart',
             populate: {
-              path: 'category',
-              model: 'Category'
-            }
-          },
-       })
+              path: 'product',
+              model: 'Product',
+              populate: {
+                path: 'category',
+                model: 'Category'
+              }
+            },
+          })
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -36,48 +36,7 @@ const resolvers = {
 
     },
 
-    checkout: async (parent, args, context) => {
-      if (!context.user) {
-        throw new AuthenticationError('You need to be logged in!');
-      }
-
-      const user = await User.findOne({ _id: context.user._id })
-      .populate({ 
-        path: 'cart',
-        populate: {
-          path: 'product',
-          model: 'Product',
-          populate: {
-            path: 'category',
-            model: 'Category'
-          }
-        },
-     });
-      const url = new URL(context.headers.referer).origin;
-
-      // convert cart items to stripe format
-      const line_items = user.cart.map(item => ({
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: item.product.name,
-            // convert the price to cents for stripe format
-            unit_amount: item.product.price * 100,
-          },
-        },
-        quantity: item.quantity,
-      }));
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items,
-        mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`
-      });
-
-      return session.id;
-    },
+    
 
     // const category = await Category.findOne({ name: categoryName });
     // console.log(category)
@@ -148,7 +107,7 @@ const resolvers = {
         { $push: { cart: { product: cartProduct, quantity: 1 } } },
         { new: true, runValidators: true }
         // get the updated user with the cart populated
-      ).populate({ 
+      ).populate({
         path: 'cart',
         populate: {
           path: 'product',
@@ -158,7 +117,7 @@ const resolvers = {
             model: 'Category'
           }
         },
-     })
+      })
       console.log(user)
 
       return user;
@@ -191,18 +150,18 @@ const resolvers = {
         { $set: { 'cart.$.quantity': newQuantity } },
         { new: true }
       )
-      // get the updated user with the cart populated
-      .populate({ 
-        path: 'cart',
-        populate: {
-          path: 'product',
-          model: 'Product',
+        // get the updated user with the cart populated
+        .populate({
+          path: 'cart',
           populate: {
-            path: 'category',
-            model: 'Category'
-          }
-        },
-     })
+            path: 'product',
+            model: 'Product',
+            populate: {
+              path: 'category',
+              model: 'Category'
+            }
+          },
+        })
 
       return updatedUser;
     },
@@ -218,20 +177,69 @@ const resolvers = {
         { $pull: { cart: { product: productId } } },
         { new: true }
       )
-      // get the updated user with the cart populated
-      .populate({ 
-        path: 'cart',
-        populate: {
-          path: 'product',
-          model: 'Product',
+        // get the updated user with the cart populated
+        .populate({
+          path: 'cart',
           populate: {
-            path: 'category',
-            model: 'Category'
-          }
-        },
-     })
+            path: 'product',
+            model: 'Product',
+            populate: {
+              path: 'category',
+              model: 'Category'
+            }
+          },
+        })
 
       return user;
+    },
+
+    checkout: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+
+      const user = await User.findOne({ _id: context.user._id })
+        .populate({
+          path: 'cart',
+          populate: {
+            path: 'product',
+            model: 'Product',
+            populate: {
+              path: 'category',
+              model: 'Category'
+            }
+          },
+        });
+      const url = new URL(context.headers.referer).origin;
+
+      // convert cart items to stripe format
+      const line_items = user.cart.map(item => ({
+        price_data: {
+          currency: 'usd',
+          unit_amount: item.product.price * 100,
+          product_data: {
+            name: item.product.name,
+            // convert the price to cents for stripe format
+          },
+        },
+        quantity: item.quantity,
+      }));
+
+      let session;
+      try {
+        console.log(line_items)
+        session = await stripe.checkout.sessions.create({
+          payment_method_types: ['card'],
+          line_items,
+          mode: 'payment',
+          success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${url}/`
+        });
+      } catch (error) {
+        console.error("Stripe checkout session creation failed: ", error);
+      }
+      console.log(session)
+      return session ? { session: session.id } : null;
     },
 
     clearCart: async (parent, args, context) => {
@@ -244,18 +252,18 @@ const resolvers = {
         { $set: { cart: [] } },
         { new: true }
       )
-      // get the updated user with the cart populated
-      .populate({ 
-        path: 'cart',
-        populate: {
-          path: 'product',
-          model: 'Product',
+        // get the updated user with the cart populated
+        .populate({
+          path: 'cart',
           populate: {
-            path: 'category',
-            model: 'Category'
-          }
-        },
-     })
+            path: 'product',
+            model: 'Product',
+            populate: {
+              path: 'category',
+              model: 'Category'
+            }
+          },
+        })
 
       return user;
     },

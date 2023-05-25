@@ -1,35 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CartItem from '../components/CartItem';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
-import { QUERY_CHECKOUT } from '../utils/queries';
+import { CHECKOUT } from '../utils/mutations';
 import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51N6mkHFXTaRsxdE8rkITpBkJS7j32tZkbkgieNxGsLpkOdfobbXkx6loxjsZfPiCZH2JaHSuqpyUvYYhX0uKinto00v9UdqGpr');
 
 export default function Cart() {
-    const { loading, error, data } = useQuery(QUERY_USER);
-    console.log(data)
-    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-    const userData = data?.me || {};
+    const { loading, error, data: userData } = useQuery(QUERY_USER);
+    const [getCheckout, { data: checkoutData }] = useMutation(CHECKOUT);
+    const userCart = userData?.me?.cart || [];
+    console.log(userCart)
 
     function calculateTotal() {
         let sum = 0;
-        userData.cart.forEach(item => {
+        userCart.forEach(item => {
             sum += item.quantity * item.product.price;
         });
         return sum.toFixed(2);
     }
 
+    function prepareCheckout() {
+        // prepare checkout data here, this depends on how your QUERY_CHECKOUT is structured
+        // typically you'll want to extract ids and quantities from cart items
+        const productIds = userCart.map(item => item.product._id)
+
+        // call the lazy query with checkout items
+        getCheckout({ variables: { products: productIds } });
+    }
+    // ensures that the checkoutData object is available before redirecting to Stripe
+    useEffect(() => {
+        if (checkoutData) {
+            console.log(checkoutData);
+    
+            const handleStripe = async () => {
+                const stripe = await stripePromise;
+                const session = checkoutData.checkout.session;
+                await stripe.redirectToCheckout({ sessionId: session });
+            };
+    
+            handleStripe();
+        }
+    }, [checkoutData]);
+
     async function handleCheckout() {
-        const stripe = await stripePromise;
-        // create a new checkout session
-        const { data } = await checkout();
-        const session = data.checkout.session;
-        // redirect to stripe checkout
-        await stripe.redirectToCheckout({ sessionId: session });
-      }
+        prepareCheckout();
+    }
 
     if (loading) {
         return <div>Loading...</div>;
@@ -42,9 +60,9 @@ export default function Cart() {
     return (
         <div>
             <h1>Your Cart</h1>
-            {userData.cart?.length ? (
+            {userCart.length ? (
                 <div>
-                    {userData.cart.map(item => (
+                    {userCart.map(item => (
                         <CartItem key={item._id} item={item} />
                     ))}
                     <div>
