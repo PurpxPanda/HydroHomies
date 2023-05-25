@@ -12,9 +12,9 @@ export default function Nav() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           {!Auth.loggedIn() ? (
-            <li><Link to="/login" >Login</Link></li>) : (
+            <li><Link to="/login" >Log In</Link></li>) : (
             <li> <a href="/" onClick={() => Auth.logout()}>
-              Logout
+              Sign Out
             </a></li>)
           }
           <li tabIndex={0}>
