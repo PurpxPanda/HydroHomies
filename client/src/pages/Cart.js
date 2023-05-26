@@ -68,7 +68,7 @@ export default function Cart() {
             <div className="flex justify-center" >
                 <h1 className="text-4xl" >Your Cart</h1>
             </div>
-            <div className="fixed top-0 right-0 mr-4 mt-14 z-10" >
+            <div className="sm:fixed sm:top-0 sm:right-0 sm:mr-4 sm:mt-32 sm:z-10 sm:w-64 sm:mx-auto" >
                 <div className="card bg-base-100 w-64">
                     <div className="card-body">
                         <h3 className="text-center text-xl">Total: ${calculateTotal()}</h3>
