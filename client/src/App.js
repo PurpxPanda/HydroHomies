@@ -52,9 +52,9 @@ export default function App() {
     // wrap the entire app in the ApolloProvider component and pass in the client
     <ApolloProvider client={client}>
     <Router>
-      <div>
+      <div className="flex flex-col min-h-screen">
         <Nav />
-        <Routes>
+        <Routes className="flex-grow">
           <Route exact path="/" element={<Home />} />
           <Route exact path="/bundles" element={<Bundles />} />
           <Route exact path="/bottles" element={<Flasks />} />
