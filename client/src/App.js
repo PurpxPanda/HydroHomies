@@ -11,7 +11,7 @@ import Auth from './utils/auth';
 
 
 import Bundles from './pages/Bundles';
-import Flasks from './pages/Flasks';
+import Flasks from './pages/Bottles';
 import FlavorPacks from './pages/FlavorPacks';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -24,7 +24,7 @@ import './App.css';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   // change to /graphql for production
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 // set up request middleware to attach token to every request as authorization headers
@@ -57,7 +57,7 @@ export default function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/bundles" element={<Bundles />} />
-          <Route exact path="/flasks" element={<Flasks />} />
+          <Route exact path="/bottles" element={<Flasks />} />
           <Route exact path="/flavor-packs" element={<FlavorPacks />} />
           <Route exact path="/login" element={<Login />} />
           <Route 

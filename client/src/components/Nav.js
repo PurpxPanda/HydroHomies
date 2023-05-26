@@ -19,7 +19,7 @@ export default function Nav() {
               </a></li>)
             }
             <li><Link to="/bundles" >Bundles</Link></li>
-            <li><Link to="/flasks" >Flasks</Link></li>
+            <li><Link to="/bottles" >Bottles</Link></li>
             <li><Link to="/flavor-packs" >Flavor Packs</Link></li>
             <li><Link to="/cart" >View Cart</Link></li>
           </ul>
@@ -51,7 +51,7 @@ export default function Nav() {
             </a>
             <ul className="p-2 bg-base-100 z-30">
               <li><Link to="/bundles" >Bundles</Link></li>
-              <li><Link to="/flasks" >Flasks</Link></li>
+              <li><Link to="/bottles" >Bottles</Link></li>
               <li><Link to="/flavor-packs" >Flavor Packs</Link></li>
             </ul>
           </li>
