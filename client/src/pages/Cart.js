@@ -30,8 +30,7 @@ export default function Cart() {
     }
 
     function prepareCheckout() {
-        // prepare checkout data here, this depends on how your QUERY_CHECKOUT is structured
-        // typically you'll want to extract ids and quantities from cart items
+        // create array of product ids for checkout
         const productIds = userCart.map(item => item.product._id)
 
         // call the lazy query with checkout items
@@ -40,7 +39,7 @@ export default function Cart() {
     // ensures that the checkoutData object is available before redirecting to Stripe
     useEffect(() => {
         if (checkoutData) {
-         
+
 
             const handleStripe = async () => {
                 const stripe = await stripePromise;
@@ -91,8 +90,16 @@ export default function Cart() {
                     </div>
                 ) : (
                     <div>
-                        <h3 className="text-center text-2xl mb-4">Uh-oh, bro! Your cart is as empty as an ocean with no waves!</h3>
-                        <p className="text-center text-lg mb-4">Be a homie and start sipping sustainably to inspire change.</p>
+                        <h3
+                            className="text-center text-2xl mb-4"
+                        >
+                            Uh-oh, bro! Your cart is as empty as an ocean with no waves!
+                        </h3>
+                        <p
+                            className="text-center text-lg mb-4"
+                        >
+                            Be a homie and start sipping sustainably to inspire change.
+                        </p>
                         <div className="flex justify-center mb-4">
                             <button
                                 className="btn btn-primary"
