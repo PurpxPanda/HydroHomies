@@ -95,12 +95,12 @@ export default function Cart() {
                         >
                             Uh-oh, bro! Your cart is as empty as an ocean with no waves!
                         </h3>
-                        <p
-                            className="text-center text-lg mb-4"
+                        <h4
+                            className="text-center text-xl mb-10"
                         >
                             Be a homie and start sipping sustainably to inspire change.
-                        </p>
-                        <div className="flex justify-center mb-4">
+                        </h4>
+                        <div className="flex justify-center">
                             <button
                                 className="btn btn-primary"
                                 onClick={handleClick}
