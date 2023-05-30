@@ -75,5 +75,5 @@ All contributions and suggestions are welcome! For direct contributions, please 
 
 ## Questions
 
-For any questions, please contact me at jared.tichacek@gmail.com. Feel free to check out more of my projects at [jtich40](https://github.com/jtich40)!
+For any questions, please contact either of us at jared.tichacek@gmail.com or john.xavier.ray@gmail.com. 
 
