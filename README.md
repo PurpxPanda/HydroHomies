@@ -28,7 +28,7 @@ The application can be accessed by the deployed link (see Usage section below). 
 
 ## Usage
 
-The deployed application can be accessed at this [link](https://hydro-homies.herokuapp.com/).
+The deployed application can be accessed at this [link](https://hydrohomies.herokuapp.com/).
 
 Home page:
 
