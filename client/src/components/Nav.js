@@ -12,9 +12,16 @@ export default function Nav() {
           </label>
           <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             <li><Link to="/" >Home</Link></li>
+            {!Auth.loggedIn() ? (
+              <li><Link to="/login" >Log In</Link></li>) : (
+              <li> <a href="/" onClick={() => Auth.logout()}>
+                Sign Out
+              </a></li>)
+            }
             <li><Link to="/bundles" >Bundles</Link></li>
-            <li><Link to="/flasks" >Flasks</Link></li>
+            <li><Link to="/bottles" >Bottles</Link></li>
             <li><Link to="/flavor-packs" >Flavor Packs</Link></li>
+            <li><Link to="/cart" >View Cart</Link></li>
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl hidden lg:flex"><Link to="/" >Home</Link></a>
@@ -44,7 +51,7 @@ export default function Nav() {
             </a>
             <ul className="p-2 bg-base-100 z-30">
               <li><Link to="/bundles" >Bundles</Link></li>
-              <li><Link to="/flasks" >Flasks</Link></li>
+              <li><Link to="/bottles" >Bottles</Link></li>
               <li><Link to="/flavor-packs" >Flavor Packs</Link></li>
             </ul>
           </li>

@@ -11,7 +11,7 @@ import Auth from './utils/auth';
 
 
 import Bundles from './pages/Bundles';
-import Flasks from './pages/Flasks';
+import Flasks from './pages/Bottles';
 import FlavorPacks from './pages/FlavorPacks';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -52,12 +52,12 @@ export default function App() {
     // wrap the entire app in the ApolloProvider component and pass in the client
     <ApolloProvider client={client}>
     <Router>
-      <div>
+      <div className="flex flex-col min-h-screen">
         <Nav />
-        <Routes>
+        <Routes className="flex-grow">
           <Route exact path="/" element={<Home />} />
           <Route exact path="/bundles" element={<Bundles />} />
-          <Route exact path="/flasks" element={<Flasks />} />
+          <Route exact path="/bottles" element={<Flasks />} />
           <Route exact path="/flavor-packs" element={<FlavorPacks />} />
           <Route exact path="/login" element={<Login />} />
           <Route 

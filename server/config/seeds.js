@@ -6,7 +6,7 @@ db.once('open', async () => {
 
     const categories = await Category.insertMany([
         { name: 'Bundles'},
-        { name: 'Flasks'},
+        { name: 'Bottles'},
         { name: 'Flavor Packs'}
     ]);
 
@@ -14,180 +14,152 @@ db.once('open', async () => {
 
     await Product.deleteMany();
 
-    const products = await Product.insertMany([
+    await Product.insertMany([
         {
-            image: 'StarterBundlepng.png',
+            image: 'starter.jpg',
             name:'Starter Bundle',
             category: categories[0]._id,
-            price: 40.00
+            price: 59.99
         },
 
         {
-            image: 'FamilyBundle.png',
+            image: 'family.jpg',
             name:'Family Bundle',
             category: categories[0]._id,
-            price: 100.00
+            price: 99.99
         },
 
         {
-            image: 'AssortedRefill.png',
-            name: 'Assorted Flavors Refill',
+            image: 'summer.jpg',
+            name: 'Summer Flavor Bundle',
             category: categories[0]._id,
-            price: 30.00
+            price: 29.99
         },
 
         {
-            image: 'ClassicRefill.png',
-            name: 'Classic Flavors Refill',
+            image: 'berry-blast.jpg',
+            name: 'Berry Blast Bundle',
             category: categories[0]._id,
-            price: 30.00
+            price: 29.99
         },
 
         {
-            image: 'AllRefill.png',
-            name: 'All Flavors Refill',
+            image: 'tropical.jpg',
+            name: 'Tropical Flavor Bundle',
             category: categories[0]._id,
-            price: 90.00
+            price: 29.99
         },
 
         {
-            image: 'RedBottle.png',
-            name: 'Red Flask',
+            image: 'red-bottle.jpg',
+            name: 'Red Bottle',
             category: categories[1]._id,
-            price: 30.00
+            price: 34.99
         },
 
         {
-            image: 'OrangeBottle.png',
-            name: 'Orange Flask',
+            image: 'orange-bottle.jpg',
+            name: 'Orange Bottle',
             category: categories[1]._id,
-            price: 30.00
+            price: 34.99
         },
 
         {
-            image: 'YellowBottle.png',
-            name: 'Yellow Flask',
+            image: 'yellow-bottle.jpg',
+            name: 'Yellow Bottle',
             category: categories[1]._id,
-            price: 30.00
+            price: 34.99
         },
 
         {
-            image: 'GreenBottle.png',
-            name: 'Green Flask',
+            image: 'green-bottle.jpg',
+            name: 'Green Bottle',
             category: categories[1]._id,
-            price: 30.00
+            price: 34.99
         },
 
         {
-            image: 'BlueBottle.png',
-            name: 'Blue Flask',
+            image: 'blue-bottle.jpg',
+            name: 'Blue Bottle',
             category: categories[1]._id,
-            price: 30.00
+            price: 34.99
         },
 
         {
-            image: 'PurpleBottle.png',
-            name: 'Purple Flask',
+            image: 'black-bottle.jpg',
+            name: 'Black Bottle',
             category: categories[1]._id,
-            price: 30.00
+            price: 34.99
         },
 
         {
-            image: 'PinkBottle.png',
-            name: 'Pink Flask',
+            image: 'white-bottle.jpg',
+            name: 'White Bottle',
             category: categories[1]._id,
-            price: 30.00
-        },
-
-        {
-            image: 'BlackBottle.png',
-            name: 'Black Flask',
-            category: categories[1]._id,
-            price: 30.00
-        },
-
-        {
-            image: 'WhiteBottle.png',
-            name: 'White Flask',
-            category: categories[1]._id,
-            price: 30.00
-        },
-
-        {
-            image: 'CamoBottle.png',
-            name: 'Camouflage Flask',
-            category: categories[1]._id,
-            price: 30.00
-        },
-
-        {
-            image: 'Cola.jpg',
-            name: 'Cola Flavor',
-            category: categories[2]._id,
-            price: 10.00
+            price: 34.99
         },
 
         {
             image: 'LemonLime.jpg',
             name: 'Lemon Lime Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'Orange.jpg',
             name: 'Orange Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'Berry.jpg',
             name: 'Berry Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'Pineapple.jpg',
             name: 'Pineapple Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'grapes.jpg',
             name: 'Grape Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'FruitPunch.jpg',
             name: 'Fruit Punch Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'Mango.jpg',
             name: 'Mango Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'Watermelon.jpg',
             name: 'Watermelon Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
 
         {
             image: 'Green-apple.jpg',
             name: 'Green Apple Flavor',
             category: categories[2]._id,
-            price: 10.00
+            price: 4.99
         },
     ]);
 
